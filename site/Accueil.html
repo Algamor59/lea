@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LawGame</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="icon"  href="img/logo.ico" />
+</head>
+<body>
+  <img
+      src="img/logo.png"
+      id="logotruc"
+    />
+  <div id="guess">
+    <h1>
+      Guess who broke the law 
+    </h1>
+    <h2>
+      Chances left : <span id="sum"></span>
+   </h2>
+</body>
+<script type="text/javascript">
+   document.getElementById("sum").innerHTML=chances;
+</script>
+<style>
+  h2{
+    color: rgb(255, 230, 0);
+   font-size: 30px; 
+   position: absolute;
+   margin-top: 220px;
+   left:44%;
+   text-align: center;
+  }
+</style>
+  </div>
+  <div class="gallery">
+    <img
+      src="img/Homme_2-removebg-preview.png"
+      class="gallery__photo gallery__photo--p1"
+      alt=""
+      id="myBtn"
+    />
+    <img
+      src="img/femme_2-removebg-preview.png"
+      class="gallery__photo gallery__photo--p2"
+      alt=""
+      id="myBtn2"
+    />
+    <img
+      src="img/Femme_1-removebg-preview.png"
+      class="gallery__photo gallery__photo--p3"
+      alt=""
+      id="myBtn3"
+    />
+    <img
+      src="img/homme_1-removebg-preview.png"
+      class="gallery__photo gallery__photo--p4"
+      alt=""
+      id="myBtn4"
+    />
+<div class="emailform">
+  <form>
+  <label for="email">Enter your email for 1 more chance:</label>
+
+<input type="email" id="email"
+       pattern=".+@\" size="30" required>
+       <input type="button" value="Send" id="send" onclick="chance()">
+      </form>
+</div>
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Oops</h4>
+        </div>
+        <div class="modal-body">
+          <p>You did a mistake, do you think that is a reason to go to jail ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal3" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Uh-Oh</h4>
+      </div>
+      <div class="modal-body">
+        <p>You don't have any chance left, submit your mail adress to get one more chance.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal2" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Marie Louftkova</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          She was an accountant in her previous company, and she embezzled money for her own benefit. She was caught and was sentenced to 5 years in prison. After getting out, she struggled a lot to find a new job but she was finally hired in a store selling organic products, first as a seller, but now she evolved in the company and trains new employees managing them. 
+          She had a second chance, why not the others. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+</div>
+<div class="modal fade" id="myModal4" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Oops</h4>
+      </div>
+      <div class="modal-body">
+        <p>You have already used your mail adress to get your last chance, sorry.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+</div>
+<style>
+  .btn-default{
+      background-color: rgb(255, 230, 0);
+   }
+</style>
+<script>
+  let chances;
+chances= 2;
+let rempli;
+rempli=0;
+</script>
+<script>
+
+document.getElementById("sum").innerHTML=chances;
+  $("#myBtn").click(function(){
+    if (chances>0){
+    $("#myModal").modal();
+    chances=chances-1;
+  }
+    else{
+      $("#myModal3").modal();
+    }
+    document.getElementById("sum").innerHTML=chances;  
+  });
+  $("#myBtn2").click(function(){
+    if (chances>0){
+    $("#myModal").modal();
+    chances=chances-1;
+  }
+    else{
+      $("#myModal3").modal();
+    }
+    document.getElementById("sum").innerHTML=chances;  
+  });
+
+  $("#myBtn3").click(function(){
+    if (chances>0){
+      $("#myModal2").modal();
+      chances=chances-1;
+    }
+    else{
+      $("#myModal3").modal();
+    }
+    document.getElementById("sum").innerHTML=chances; 
+  });
+
+  $("#myBtn4").click(function(){
+    if (chances>0){
+    $("#myModal").modal();
+    chances=chances-1;
+  }
+    else{
+      $("#myModal3").modal();
+    }
+    document.getElementById("sum").innerHTML=chances; 
+  });
+  
+  function chance(){
+  if(rempli==0){
+  chances=chances+1;
+  document.getElementById("sum").innerHTML=chances;
+  rempli=1;
+}
+  else{
+    $("#myModal4").modal();
+  }
+
+}
+
+
+
+</script>
+<style>
+  form{
+    color: rgb(255, 230, 0);
+  }
+  input{
+    color:black;
+  }
+    #logotruc{
+      width: 70px;
+      height: 70px;
+      position: absolute;
+    }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  /*truc bidule de test
+  .background {
+    background-image: url("back.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .blur {
+    backdrop-filter: blur(8px);
+  }
+  
+  .multiple-filters {
+    backdrop-filter: blur(20px) saturate(120%) contrast(200%);
+  }
+  
+  @keyframes changeWidth {
+    0% {
+      width: 0%;
+    }
+    5% {
+      width: 0%;
+    }
+    50% {
+      width: 50%;
+    }
+    80% {
+      width: 50%;
+    }
+    100% {
+      width: 0%;
+    }
+  }
+  .btn {
+    backface-visibility: hidden;
+    background: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    left: 50%;
+    padding: 12px 16px;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .btn:focus {
+    outline: none;
+  }
+  truc bidule de test*/
+
+  label {
+    display: block;
+    position: absolute;
+    top: 287px;
+    left: 34%;
+    letter-spacing: 1.7px;
+}
+#send{
+  position: absolute;
+    top: 310px;
+    left:62%;
+}
+#email {
+    position: absolute;
+    top: 310px;
+    left:34%;
+}
+
+  .guess {
+      position: absolute;
+      top: 200px;
+    }
+ h1{
+  color: rgb(255, 230, 0);
+   font-size: 80px; 
+   position: absolute;
+   margin-top: 120px;
+   left:24%;
+   text-align: center;
+ }
+    @font-face {
+  font-family: "Ma Super Fonte";
+  src: url("Anton.ttf");
+}
+  body {
+    font-family: "Ma Super Fonte", Helvetica, Arial, sans-serif;
+  font-size: 13.4pt;
+  }
+  
+  nav {
+    background: transparent;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    color:cyan;
+  }
+  
+  .logo {
+    color: #06b7fd;
+    font-size: 33px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  nav ul {
+    float: right;
+    margin-right: 32%;
+    margin-left: auto;
+  
+    z-index: 999;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    list-style: none;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  
+  nav ul li a {
+    color: #06b7fd;
+    font-size: 17px;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+  
+    transition: all 0.3s;
+  }
+  
+  a:hover {
+    color: #06b7fd;
+  }
+  
+  /* .checkbtn #cancel, */
+  .checkbtn #bars, .checkbtn #cancel {
+    font-size: 30px;
+    color: black;
+    float: right;
+    margin: 25px;
+    cursor: pointer;
+  
+    display: none;
+  
+    transition: all 0.2s ease;
+  }
+  
+  #check {
+    display: none;
+  }
+  
+  #overlay{
+    position:absolute;
+    top: 740px;
+    left: 42%;
+    z-index:2;
+    display:none;
+    width:200px;
+    height:150px;
+    overflow:auto;
+    border-style:solid;
+    border-color:#909090;
+    border-width:1px;
+    background-color:#f0f0f0;
+  }
+  
+  @media only screen and (max-width: 980px) {
+    .logo {
+      padding-left: 40px;
+    }
+  
+    .checkbtn #bars {
+      display: block;
+    }
+  
+    nav ul {
+      position: fixed;
+      background: #119dc0;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      /* top: 80px; */
+  
+      right: -100%;
+      margin-right: 0;
+  
+      transition: all 0.3s;
+    }
+  
+    nav ul li {
+      display: block;
+      margin: 40px 0;
+    }
+  
+    nav ul li a {
+      font-size: 20px;
+    }
+  
+    #check:checked ~ ul {
+      right: 0;
+    }
+  
+    #check:checked ~ label #bars {
+      display: none;
+    }
+  
+    #check:checked ~ label #cancel {
+      display: block;
+    }
+  }
+  
+  /* hero section */
+  .hero {
+   /* background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(52,4,4,1) 20%, rgba(6,76,72,1) 44%, rgba(121,9,69,1) 71%, rgba(0,212,255,1) 100%);
+    background-size: cover;
+    background-position: center;*/
+    height: calc(100vh - 80px);
+    /* z-index: -5; */
+  }
+  
+  .inner-content {
+    width: 800px;
+    color: #dadada;
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    /* z-index: 1; */
+  }
+  
+  
+  .inner-content .lead {
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+  }
+  
+  .button {
+    text-align: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-transform: capitalize;
+  
+  }
+  
+  
+  .btn-full {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
+  .btn-full {
+     width: 200px;
+     margin-right: auto;
+     margin-left: auto;
+     padding: 15px 45px;
+     text-align: center;
+     text-transform: uppercase;
+     transition: 0.5s;
+     background-size: 200% auto;
+     color: white;            
+     box-shadow: 0 0 20px #eee;
+     border-radius: 10px;
+     display: block;
+   }
+  
+   .btn-full:hover {
+     background-position: right center; /* change the direction of the change here */
+     color: #fff;
+     text-decoration: none;
+   }
+  
+  
+  
+   .btn-inline {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
+   .btn-inline {
+      width: 200px;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 40px;
+      padding: 15px 45px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: white;            
+      box-shadow: 0 0 20px #eee;
+      border-radius: 10px;
+      display: block;
+    }
+   
+    .btn-inline:hover {
+      background-position: right center; /* change the direction of the change here */
+      color: #fff;
+      text-decoration: none;
+    }
+  
+  @media only screen and (max-width: 900px) {
+   
+    .inner-content {
+      width: 600px;
+    }
+  
+  
+    .inner-content .lead {
+      font-size: 13px;
+      text-align: center;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .logo {
+      font-size: 30px;
+    }
+    
+    .inner-content {
+      width: 400px;
+      padding: 20px;
+    }
+  
+  }
+  /* Partie galerie*/
+  * {
+      margin: 0;
+      padding: 0  ;
+      box-sizing: border-box;
+    }
+    
+    body {
+      height: 100vh;
+      padding-top: 0px;
+      background-image: url("img/black.jfif");
+      background-size: 100%;
+      /*background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(52,4,4,1) 20%, rgba(6,76,72,1) 44%, rgba(121,9,69,1) 71%, rgba(0,212,255,1) 100%);*/
+    }
+
+    .gallery {
+      width: 1000px;
+      margin: 0 auto;
+      top: 400px;
+      position: relative;
+    }
+    
+    .gallery__photo {
+      width: 250px;
+      height: 250px;
+      border-radius: 2px;
+    
+      position: absolute;
+      transition: all 0.2s;
+      z-index: 10;
+      outline-offset: 20px;
+    }
+    
+    .gallery__photo--p1 {
+      top: 0;
+      left: -70px;
+    }
+    
+    .gallery__photo--p2 {
+      top: 0;
+      left: 82%;
+      z-index: 1;
+    }
+    
+    .gallery__photo--p3 {
+      top: 0px;
+      left: 23%;
+    }
+    
+    .gallery__photo--p4 {
+      top: 0px;
+      left: 52%;
+    }
+    
+    .gallery__photo--p5 {
+      top: 40px;
+      left: 60%;
+      z-index: 2;
+    }
+    
+    .gallery__photo:hover {
+      outline: 15px solid #ffe850e5;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: scale(1.05) translateY(-20px);
+      z-index: 20;
+    }
+    .gallery:hover .gallery__photo:not(:hover) {
+      transform: scale(0.9);
+    }
+  
+        </style>
+</body>
+</html>
